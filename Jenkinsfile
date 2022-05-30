@@ -16,13 +16,13 @@ pipeline{
 	   /* stage('gitclone') {
 
 			steps {
-                                git branch: 'featuerUI', url: 'https://github.com/parsaganigopi/docker-poc.git'
+                                git branch: 'featuerUI', url: 'https://github.com/ramgopalk/docker-poc.git'
 			}
 		}*/
 		stage('Build') {
 
 			steps {
-				sh 'docker build -t gopinadh/nginxpoc:${GIT_BRANCH} .'
+				sh 'docker build -t ramgopalkoya/nginxpoc:${GIT_BRANCH} .'
 			}
 		}
 
@@ -36,14 +36,14 @@ pipeline{
 		stage('Push') {
 
 			steps {
-				sh 'docker push gopinadh/nginxpoc:${GIT_BRANCH}'
+				sh 'docker push ramgopalkoya/nginxpoc:${GIT_BRANCH}'
 			}
 		}
 		
 		stage('container') {
 
 			steps {
-				sh 'docker run -itd -p 90:80 --name ${tag} gopinadh/nginxpoc:${GIT_BRANCH}'
+				sh 'docker run -itd -p 90:80 --name ${tag} ramgopalkoya/nginxpoc:${GIT_BRANCH}'
 			}
 		}
 	}
