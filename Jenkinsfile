@@ -13,12 +13,12 @@ pipeline{
 
 	stages {
 	    
-	    stage('gitclone') {
+	   /* stage('gitclone') {
 
 			steps {
                                 git branch: 'featuerUI', url: 'https://github.com/parsaganigopi/docker-poc.git'
 			}
-		}
+		}*/
 		stage('Build') {
 
 			steps {
