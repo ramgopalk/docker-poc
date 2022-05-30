@@ -5,7 +5,6 @@ pipeline{
 
 	environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhubcred1')
-		BRANCH_NAME='master'
 		tag = sh(returnStdout: true, script: "git rev-parse --short=10 HEAD").trim()
 		FULL_PATH_BRANCH = "${sh(script:'git name-rev --name-only HEAD', returnStdout: true)}"
         GIT_BRANCH = FULL_PATH_BRANCH.substring(FULL_PATH_BRANCH.lastIndexOf('/') + 1, FULL_PATH_BRANCH.length())
@@ -17,7 +16,7 @@ pipeline{
 	    stage('gitclone') {
 
 			steps {
-				git 'https://github.com/parsaganigopi/docker-poc.git'
+				git 'https://github.com/parsaganigopi/docker-poc.git, branch: '${GIT_BRANCH}''
 			}
 		}
 		stage('Build') {
